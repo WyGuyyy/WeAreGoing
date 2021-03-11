@@ -172,6 +172,30 @@ body::-webkit-scrollbar-track {
   align-items: center;
 }
 
+.WAG-CoverFee-Wrapper{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.WAG-CoverFee-Label{
+  color: white;
+  margin-right: 10px;
+  font-size: 20px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.WAG-CoverFee-Label:hover{
+  color: #f1ff6f;
+}
+
+.WAG-CoverFee-Checkbox{
+  transform: scale(1.5);
+}
+
 /*
 .WelsDollar-Paypal-Title-Wrapper:hover #test{
   color: #383838;

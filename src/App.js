@@ -15,7 +15,8 @@ class App extends React.Component{
         this.state = {
           amount: 0,
           receiver: "",
-          link: ""
+          link: "",
+          coverFee: false
         };
 
     }
@@ -27,6 +28,10 @@ class App extends React.Component{
     //Lifecycle event preparing Slideshow component to unmount from DOM
     componentWillUnmount(){
 
+    }
+
+    onClickCover(event){
+      this.showCoverModal();
     }
 
     async fillInfo(){
@@ -43,6 +48,21 @@ class App extends React.Component{
         amount: data.amount,
         receiver: data.receiver,
         link: data.link
+      });
+    }
+
+    checkboxClicked(event){
+      var cover = document.getElementsByClassName("WAG-CoverFee-Checkbox")[0];
+      var isCovered = false
+      
+      if(cover.checked){
+        isCovered = true;
+      }else{
+        isCovered = false;
+      }
+
+      this.setState({
+        coverFee: isCovered
       });
     }
 
@@ -141,6 +161,16 @@ class App extends React.Component{
     }
     }
 
+    showCoverModal(){
+      document.getElementById("confirmDonationContainer").style.display = "flex";
+      document.getElementById("confirmDonationText").textContent = "Papyal charges approximately a 10 cent fee per transaction, so the donation fund would recieve $0.90 after the fee is taken out. Covering the 10 cent fee would mean your entire dollar would go towards the donation for the week, but you would be paying $1.10 instead of just $1.00. Either way, your donation is much appreciated!";
+      document.getElementsByClassName("confirmDonationContent")[0].classList.add("confirmDonationContentShow");
+
+      if(document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0] !== undefined){
+        document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0].style.opacity = "0";
+    }
+    }
+
     showSubscribeErrorModal(){
       document.getElementById("confirmDonationContainer").style.display = "flex";
       document.getElementById("confirmDonationText").textContent = "Sorry, an unexpected problem happened when subscribing. Please make sure a valid email address is entered and try again.";
@@ -209,8 +239,12 @@ class App extends React.Component{
                     {this.checkTimeout(localStorage.getItem("donation_timeout")) ?
                      this.checkTime() ? <div className="WelsDollar-Paypal-Wrapper">
                         <h2 className="WelsDollar-Paypal-Title TextShow">Donate a dollar:</h2>
+                        <div className="WAG-CoverFee-Wrapper">
+                          <label className="WAG-CoverFee-Label" onClick={e => this.onClickCover(e)}>Cover 10 cent fee?</label>
+                          <input className="WAG-CoverFee-Checkbox" type="checkbox" onClick={e => this.checkboxClicked(e)}/>
+                        </div>
                         <PaypalButton 
-                          amount={1}
+                          amount={1 + (this.state.coverFee ? .1 : 0)}
                           currency={'USD'}
                           onApprove={this.onApprove}
                         />
