@@ -12,7 +12,7 @@
     box-shadow: 2px 2px 10px black;
 }
 
-.WelsDollar-Spinner-DollarSignWrapper{
+.WeAreGoing-Spinner-DollarSignWrapper{
     width: 37.5px;
     height: 80px;
     display: flex;
@@ -22,7 +22,7 @@
     background-color: rgb(29, 29, 29);
 }
 
-.WelsDollar-Spinner-DollarSign{
+.WeAreGoing-Spinner-DollarSign{
     color: white;
     text-align: center;
 }

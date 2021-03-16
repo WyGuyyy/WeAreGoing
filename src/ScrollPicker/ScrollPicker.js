@@ -92,8 +92,8 @@ class ScrollPicker extends React.Component{
         var dollarSignWrapper = document.createElement("div");
         var dollarSign = document.createElement("h1");
 
-        dollarSignWrapper.classList.add("WelsDollar-Spinner-DollarSignWrapper");
-        dollarSign.classList.add("WelsDollar-Spinner-DollarSign");
+        dollarSignWrapper.classList.add("WeAreGoing-Spinner-DollarSignWrapper");
+        dollarSign.classList.add("WeAreGoing-Spinner-DollarSign");
         dollarSign.textContent = "$";
 
         dollarSignWrapper.appendChild(dollarSign);
@@ -166,8 +166,8 @@ class ScrollPicker extends React.Component{
             <Fragment>
                 <div className="Scroll-Picker-Container">
                     <div className="Scroll-Picker-Wrapper" id={this.props.controlWrapperID}>
-                        <div className="WelsDollar-Spinner-DollarSignWrapper">
-                            <h1 className="WelsDollar-Spinner-DollarSign" >$</h1>
+                        <div className="WeAreGoing-Spinner-DollarSignWrapper">
+                            <h1 className="WeAreGoing-Spinner-DollarSign" >$</h1>
                         </div>
                     </div>
                 </div>

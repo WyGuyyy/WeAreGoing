@@ -43,7 +43,7 @@
 .infoBoxText{
     color: white;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .InfoBox-Button-Wrapper{
@@ -202,6 +202,14 @@
     .popoutVideo{
         width: 300px;
         height: 200px;
+    }
+
+  }
+
+  @media(max-width: 400px){
+
+    .infoBoxText{
+        font-size: 13px;
     }
 
   }

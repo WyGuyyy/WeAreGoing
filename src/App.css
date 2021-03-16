@@ -11,11 +11,11 @@ html, body{
 
 /*START HERE NEXT TIME WIERD FORMATTING ISSUE WITH HOME PAGE*/
 
-.welsDollarContainer{
+.weAreGoingContainer{
   
 }
 
-.welsDollarPopout{
+.weAreGoingPopout{
   position: absolute;
   top: 20px;
   right: 40px;
@@ -27,11 +27,11 @@ html, body{
   z-index: 2;
 }
 
-.welsDollarPopout:hover{
+.weAreGoingPopout:hover{
   color: #f1ff6f;
 }
 
-.welsDollarWrapper{
+.weAreGoingWrapper{
   position: absolute;
   top: 100%;
   width: 100%;
@@ -56,7 +56,7 @@ body::-webkit-scrollbar-track {
   background-color: #F5F5F5;
 }
 
-.WelsDollar-Title-Wrapper{
+.WeAreGoing-Title-Wrapper{
   position: absolute;
   top: 0;
   height: 100%;
@@ -71,7 +71,7 @@ body::-webkit-scrollbar-track {
   z-index: 1;
 }
 
-.WelsDollar-Title{
+.WeAreGoing-Title{
   /*font-family: Arial, sans-serif;*/
   font-family:"Frutiger LT W01 45 Light" !important;
   /*color: white;*/
@@ -100,7 +100,7 @@ body::-webkit-scrollbar-track {
   animation: changeTitleColor 5s linear infinite;
 }
 
-.WelsDollar-Church-Wrapper{
+.WeAreGoing-Reciever-Wrapper{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -110,11 +110,11 @@ body::-webkit-scrollbar-track {
   height: 200px;
 }
 
-.WelsDollar-Church-Title{
+.WeAreGoing-Reciever-Title{
   margin: 0;
 }
 
-.WelsDollar-Donation-Wrapper{
+.WeAreGoing-Donation-Wrapper{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -124,7 +124,7 @@ body::-webkit-scrollbar-track {
   height: 400px;
 }
 
-.WelsDollar-Donation-ScrollWrapper{
+.WeAreGoing-Donation-ScrollWrapper{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -133,7 +133,7 @@ body::-webkit-scrollbar-track {
   background-color: black;
 }
 
-.WelsDollar-Video-Wrapper{
+.WeAreGoing-Video-Wrapper{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -143,7 +143,7 @@ body::-webkit-scrollbar-track {
   height: 400px;
 }
 
-.WelsDollar-Paypal-Wrapper{
+.WeAreGoing-Paypal-Wrapper{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -152,7 +152,7 @@ body::-webkit-scrollbar-track {
   height: 200px;
 }
 
-.WelsDollar-Paypal-Title{
+.WeAreGoing-Paypal-Title{
   text-align: center;
   animation: reverseAnimation 1s linear forwards;
   animation-delay: 1s;
@@ -163,7 +163,7 @@ body::-webkit-scrollbar-track {
   /*transition-duration: 4s;*/
 }
 
-.WelsDollar-Paypal-Title-Wrapper{
+.WeAreGoing-Paypal-Title-Wrapper{
   height: 100%;
   width: 100%;
   display: flex;
@@ -205,25 +205,34 @@ body::-webkit-scrollbar-track {
   transition-duration: .5s;
 }
 
-.WelsDollar-Title{
+.WeAreGoing-Title{
   color: white;
   font-size: 40px;
 }
 
-.WelsDollar-Church-Title{
+.WeAreGoing-Reciever-Title{
   color: rgb(231, 231, 231);
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-.WelsDollar-Church{
+.WeAreGoing-Reciever{
   color: rgb(231, 231, 231);
   font-size: 40px;
   margin: 0;
   text-align: center;
+  transition-duration: 0.5s;
 }
 
-.WelsDollar-Church-Divider{
+.WeAreGoing-Reciever:hover{
+  color: #f1ff6f
+}
+
+.WeAreGoing-Link{
+  text-decoration: none;
+}
+
+.WeAreGoing-Reciever-Divider{
   width: 100px;
   height: 2px;
   background-color: rgb(179, 179, 179);
@@ -231,7 +240,7 @@ body::-webkit-scrollbar-track {
   margin-bottom: 10px;
 }
 
-.WelsDollar-Donation-Title{
+.WeAreGoing-Donation-Title{
   color: rgb(231, 231, 231);
   font-size: 30px;
   margin: 10px;
@@ -241,7 +250,7 @@ body::-webkit-scrollbar-track {
   margin-bottom: 20px;
 }
 
-.WelsDollar-VideoFrame{
+.WeAreGoing-VideoFrame{
   width: 580px; 
   height: 335px;
   /*box-shadow: 2px 2px 10px black;*/
@@ -252,7 +261,7 @@ body::-webkit-scrollbar-track {
   border-radius: 15px;
 }
 
-.WelsDollar-Video{
+.WeAreGoing-Video{
   width: 560px; 
   height: 315px;
   border-radius: 15px;
@@ -265,18 +274,18 @@ body::-webkit-scrollbar-track {
   animation: showAnimation 1s linear forwards;
 }
 
-.WelsDollar-SubscribeMessage-Wrapper{
+.WeAreGoing-SubscribeMessage-Wrapper{
   width: 90%;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.WelsDollar-SubscribeMessage{
+.WeAreGoing-SubscribeMessage{
   text-align: center;
   color: white;
 }
 
-.WelsDollar-SubscribeForm{
+.WeAreGoing-SubscribeForm{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -287,7 +296,7 @@ body::-webkit-scrollbar-track {
   margin-bottom: 30px;
 }
 
-.WelsDollar-SubscribeInput{
+.WeAreGoing-SubscribeInput{
   width: auto;
   height: 100%;
   box-shadow: 2px 2px 10px black;
@@ -298,7 +307,7 @@ body::-webkit-scrollbar-track {
   padding: 5px;
 }
 
-.WelsDollar-SubscribeButton{
+.WeAreGoing-SubscribeButton{
   width: auto;
   height: 100%;
   background: rgb(43, 43, 43);
@@ -310,19 +319,19 @@ body::-webkit-scrollbar-track {
   transition-duration: .5s;
 }
 
-.WelsDollar-SubscribeButton:hover{
+.WeAreGoing-SubscribeButton:hover{
   background: rgb(170, 170, 170);
   color: rgb(0, 0, 0);
 }
 
 @media(max-width: 850px){
-  .WelsDollar-Paypal-Wrapper-Given{
+  .WeAreGoing-Paypal-Wrapper-Given{
     height: 300px;
   }
 }
 
 @media(max-width: 770px){
-  .WelsDollar-Title{
+  .WeAreGoing-Title{
     display: flex;
     flex-direction: column;
   }
@@ -347,7 +356,7 @@ body::-webkit-scrollbar-track {
 }
 
 @media(max-width: 650px){
-  .WelsDollar-VideoFrame{
+  .WeAreGoing-VideoFrame{
     width: 460px; 
     height: 255px;
     display: flex;
@@ -356,18 +365,18 @@ body::-webkit-scrollbar-track {
     align-items: center;
   }
   
-  .WelsDollar-Video{
+  .WeAreGoing-Video{
     width: 460px; 
     height: 215px;
   }
 
-  .welsDollarPopout{
+  .weAreGoingPopout{
     top: 25px;
   }
 }
 
 @media(max-width: 490px){
-  .WelsDollar-VideoFrame{
+  .WeAreGoing-VideoFrame{
     width: 90%;  
     height: 100%;
     display: flex;
@@ -376,20 +385,20 @@ body::-webkit-scrollbar-track {
     align-items: center;
   }
   
-  .WelsDollar-Video{
+  .WeAreGoing-Video{
     width: auto; 
     height: 100%;
   }
 
-  .WelsDollar-Paypal-Title{
+  .WeAreGoing-Paypal-Title{
     font-size: 20px;
   }
 
-  .WelsDollar-Title-Wrapper{
+  .WeAreGoing-Title-Wrapper{
     align-items: flex-start;
   }
 
-  .WelsDollar-Title{
+  .WeAreGoing-Title{
     font-size: 40px;
   }
 }
@@ -401,17 +410,17 @@ body::-webkit-scrollbar-track {
 }
 
 @media(max-width: 425px){
-  .WelsDollar-SubscribeForm{
+  .WeAreGoing-SubscribeForm{
     flex-direction: column;
     height: auto;
   }
 
-  .WelsDollar-SubscribeInput{
+  .WeAreGoing-SubscribeInput{
     margin-right: 0px;
     height: 40px;
   }
   
-  .WelsDollar-SubscribeButton{
+  .WeAreGoing-SubscribeButton{
     margin-top: 20px;
     height: 40px;
   }
@@ -432,17 +441,17 @@ body::-webkit-scrollbar-track {
 }
 
 @media(max-width: 375px){
-  .WelsDollar-Paypal-Wrapper-Given{
+  .WeAreGoing-Paypal-Wrapper-Given{
     height: 400px;
   }
 
-  .welsDollarPopout{
+  .weAreGoingPopout{
     right: 20px;
   }
 }
 
 @media(max-width: 340px){
-  .WelsDollar-Paypal-Wrapper-Given{
+  .WeAreGoing-Paypal-Wrapper-Given{
     height: 400px;
   }
 }
@@ -454,23 +463,23 @@ body::-webkit-scrollbar-track {
 }
 
 @media(max-width: 300px){
-  .WelsDollar-Title{
+  .WeAreGoing-Title{
     font-size: 30px;
   }
   
-  .WelsDollar-Church-Title{
+  .WeAreGoing-Reciever-Title{
     font-size: 20px;
   }
   
-  .WelsDollar-Church{
+  .WeAreGoing-Reciever{
     font-size: 15px;
   }
   
-  .WelsDollar-Donation-Title{
+  .WeAreGoing-Donation-Title{
     font-size: 20px;
   }
 
-  .WelsDollar-Paypal-Wrapper-Given{
+  .WeAreGoing-Paypal-Wrapper-Given{
     height: 450px;
   }
 }

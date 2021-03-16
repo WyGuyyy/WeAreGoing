@@ -7,6 +7,8 @@ import ConfirmDonation from './MessageBox/ConfirmDonation';
 import ScrollPicker from './ScrollPicker/ScrollPicker';
 import PaypalButton from './PaypalButton/PaypalButton';
 import InfoBox from './MessageBox/InfoBox'; 
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
+import {processOrder} from './Services/OrderService';
 
 class App extends React.Component{
     constructor(props){
@@ -37,11 +39,12 @@ class App extends React.Component{
     async fillInfo(){
       var data = await getInfo();
 
-      var receiver = document.getElementsByClassName("WelsDollar-Church")[0];
-      /*var video = document.getElementsByClassName("WelsDollar-Video")[0];*/
+      var receiver = document.getElementsByClassName("WeAreGoing-Reciever")[0];
+      var link = document.getElementsByClassName("WeAreGoing-Link")[0];
+      /*var video = document.getElementsByClassName("WeAreGoing-Video")[0];*/
 
       receiver.textContent = data.receiver;
-      console.log(data);
+      link.href = data.link;
       //video.src = data.link;
 
      this.setState({
@@ -68,11 +71,21 @@ class App extends React.Component{
 
     onApprove = async (data, actions) => { //Start here next time and get front/back end hooked up
 
-      incrementAmount();
-      localStorage.setItem('donation_timeout', this.getNextTimeout());
-      this.showModal();
+      document.getElementsByClassName("loaderBackground")[0].style.display = "flex";
 
-      return actions.order.capture();
+      var result = await processOrder({order_id: data.orderID, payer_id: data.payerID, token: data.facilitatorAccessToken});
+      if(result == 1){
+
+        //incrementAmount();
+        localStorage.setItem('donation_timeout', this.getNextTimeout());
+        this.showModal();
+
+      }else{
+
+      }
+
+      document.getElementsByClassName("loaderBackground")[0].style.display = "none";
+      //return actions.order.capture();
 
     }
 
@@ -100,7 +113,7 @@ class App extends React.Component{
     checkTime(){
       var currDate = new Date();
 
-      if(currDate.getDay() === 0 && currDate.getHours() < 12){
+      if(currDate.getDay() === 1 && currDate.getHours() < 12){
           return false;
       }
 
@@ -112,7 +125,7 @@ class App extends React.Component{
     }
 
     async handleSubscribe(event){
-        var subInput = document.getElementsByClassName("WelsDollar-SubscribeInput")[0];
+        var subInput = document.getElementsByClassName("WeAreGoing-SubscribeInput")[0];
         var email = subInput.value;
         var response;
 
@@ -146,8 +159,7 @@ class App extends React.Component{
 
     showModal(){
       document.getElementById("confirmDonationContainer").style.display = "flex";
-      document.getElementById("confirmDonationText").textContent = "You are subscribed! Check your email weekly for updates on our mission!";
-      document.getElementById("confirmDonationText").textContent = "You will be enriched in every way so that you can be generous on every occasion, and through us your generosity will result in thanksgiving to God. ~ 2 Corinthians 9:11";
+      document.getElementById("confirmDonationText").textContent = "Thank you so much for the donation! I understand this is a complete free will donation out of your own generosity, and I cannot express with words how much I appreciate that. Ad astra! ~ Wyatt";
       document.getElementsByClassName("confirmDonationContent")[0].classList.add("confirmDonationContentShow");
     }
 
@@ -156,8 +168,8 @@ class App extends React.Component{
       document.getElementById("confirmDonationText").textContent = "You are subscribed! Check your email weekly for updates on our mission!";
       document.getElementsByClassName("confirmDonationContent")[0].classList.add("confirmDonationContentShow");
 
-      if(document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0] !== undefined){
-        document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0].style.opacity = "0";
+      if(document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0] !== undefined){
+        document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0].style.opacity = "0";
     }
     }
 
@@ -166,8 +178,8 @@ class App extends React.Component{
       document.getElementById("confirmDonationText").textContent = "Papyal charges approximately a 10 cent fee per transaction, so the donation fund would recieve $0.90 after the fee is taken out. Covering the 10 cent fee would mean your entire dollar would go towards the donation for the week, but you would be paying $1.10 instead of just $1.00. Either way, your donation is much appreciated!";
       document.getElementsByClassName("confirmDonationContent")[0].classList.add("confirmDonationContentShow");
 
-      if(document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0] !== undefined){
-        document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0].style.opacity = "0";
+      if(document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0] !== undefined){
+        document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0].style.opacity = "0";
     }
     }
 
@@ -176,8 +188,8 @@ class App extends React.Component{
       document.getElementById("confirmDonationText").textContent = "Sorry, an unexpected problem happened when subscribing. Please make sure a valid email address is entered and try again.";
       document.getElementsByClassName("confirmDonationContent")[0].classList.add("confirmDonationContentShow");
 
-      if(document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0] !== undefined){
-        document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0].style.opacity = "0";
+      if(document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0] !== undefined){
+        document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0].style.opacity = "0";
     }
     }
 
@@ -185,8 +197,8 @@ class App extends React.Component{
       document.getElementById("confirmDonationContainer").style.display = "none";
       document.getElementsByClassName("confirmDonationContent")[0].classList.remove("confirmDonationContentShow");
 
-      if(document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0] !== undefined){
-        document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0].style.opacity = "1";
+      if(document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0] !== undefined){
+        document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0].style.opacity = "1";
     }
 
       this.forceUpdate();
@@ -197,8 +209,8 @@ class App extends React.Component{
       document.getElementsByClassName("infoBoxShader")[0].classList.add("infoBoxWrapperShow");
       document.getElementsByClassName("infoBoxWrapper")[0].classList.add("infoBoxWrapperShow");
 
-      if(document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0] !== undefined){
-          document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0].style.opacity = "0";
+      if(document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0] !== undefined){
+          document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0].style.opacity = "0";
       }
       
     }
@@ -207,8 +219,8 @@ class App extends React.Component{
       document.getElementsByClassName("infoBoxShader")[0].classList.remove("infoBoxWrapperShow");
       document.getElementsByClassName("infoBoxWrapper")[0].classList.remove("infoBoxWrapperShow");
       
-      if(document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0] !== undefined){
-          document.getElementsByClassName("WelsDollar-Paypal-Wrapper")[0].style.opacity = "1";
+      if(document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0] !== undefined){
+          document.getElementsByClassName("WeAreGoing-Paypal-Wrapper")[0].style.opacity = "1";
       }
 
     }
@@ -218,27 +230,28 @@ class App extends React.Component{
       var currAmount = 0;
 
         return(
-            <div className="welsDollarContainer">
+            <div className="weAreGoingContainer">
                 <InfoBox confirm={e => this.closePopout(e)}/>
                 <ConfirmDonation confirm={e => {this.closeModal()}}/>
-                <h1 className="welsDollarPopout" onClick={e => this.showPopout(e)}>?</h1>
-                <div className="WelsDollar-Title-Wrapper">
-                    <h1 className="WelsDollar-Title"><span className="WAG-We WAG-Title">WE</span> <span className="WAG-Are WAG-Title">ARE</span> <span className="WAG-Going WAG-Title">GOING</span></h1>
+                <LoadingSpinner/>
+                <h1 className="weAreGoingPopout" onClick={e => this.showPopout(e)}>?</h1>
+                <div className="WeAreGoing-Title-Wrapper">
+                    <h1 className="WeAreGoing-Title"><span className="WAG-We WAG-Title">WE</span> <span className="WAG-Are WAG-Title">ARE</span> <span className="WAG-Going WAG-Title">GOING</span></h1>
                 </div>
-                <div className="welsDollarWrapper">
-                    <div className="WelsDollar-Donation-Wrapper">
-                        <h2 className="WelsDollar-Donation-Title TextShow">This Weeks Donation</h2>
-                        <div className="WelsDollar-Church-Divider TextShow" id="donationDivider"></div>
+                <div className="weAreGoingWrapper">
+                    <div className="WeAreGoing-Donation-Wrapper">
+                        <h2 className="WeAreGoing-Donation-Title TextShow">This Weeks Donation</h2>
+                        <div className="WeAreGoing-Reciever-Divider TextShow" id="donationDivider"></div>
                         <ScrollPicker amount={currAmount}/>
                     </div>
-                    <div className="WelsDollar-Church-Wrapper">
-                        <h2 className="WelsDollar-Church-Title TextShow">Reciever of the Week</h2>
-                        <div className="WelsDollar-Church-Divider"></div>
-                        <h3 className="WelsDollar-Church TextShow">Tim Dodd - Everyday Astronaut</h3>
+                    <div className="WeAreGoing-Reciever-Wrapper">
+                        <h2 className="WeAreGoing-Reciever-Title TextShow">Reciever of the Week</h2>
+                        <div className="WeAreGoing-Reciever-Divider"></div>
+                        <a href="" className="WeAreGoing-Link"><h3 className="WeAreGoing-Reciever TextShow"></h3></a>
                     </div>
                     {this.checkTimeout(localStorage.getItem("donation_timeout")) ?
-                     this.checkTime() ? <div className="WelsDollar-Paypal-Wrapper">
-                        <h2 className="WelsDollar-Paypal-Title TextShow">Donate a dollar:</h2>
+                     this.checkTime() ? <div className="WeAreGoing-Paypal-Wrapper">
+                        <h2 className="WeAreGoing-Paypal-Title TextShow">Donate a dollar:</h2>
                         <div className="WAG-CoverFee-Wrapper">
                           <label className="WAG-CoverFee-Label" onClick={e => this.onClickCover(e)}>Cover 10 cent fee?</label>
                           <input className="WAG-CoverFee-Checkbox" type="checkbox" onClick={e => this.checkboxClicked(e)}/>
@@ -248,17 +261,17 @@ class App extends React.Component{
                           currency={'USD'}
                           onApprove={this.onApprove}
                         />
-                    </div> : <div><h2 className="WelsDollar-Paypal-Title TextShow">This weeks donation period has ended. Donation button will open again at 12:00 PM EST Sunday.</h2></div> :
-                    <div className="WelsDollar-Paypal-Title-Wrapper">
-                        <h2 className="WelsDollar-Paypal-Title TextShow" id="test">You have already given a dollar this week!</h2>
+                    </div> : <div><h2 className="WeAreGoing-Paypal-Title TextShow">This weeks donation period has ended. Donation button will open again at 12:00 PM EST Sunday.</h2></div> :
+                    <div className="WeAreGoing-Paypal-Title-Wrapper">
+                        <h2 className="WeAreGoing-Paypal-Title TextShow" id="test">You have already given a dollar this week!</h2>
                     </div>
                   }
-                  <div className="WelsDollar-SubscribeMessage-Wrapper">
-                    <h2 className="WelsDollar-SubscribeMessage">Subscribe to recieve weekly updates about our mission!</h2>
+                  <div className="WeAreGoing-SubscribeMessage-Wrapper">
+                    <h2 className="WeAreGoing-SubscribeMessage">Subscribe to recieve weekly updates about our mission!</h2>
                   </div>
-                  <div className="WelsDollar-SubscribeForm">
-                      <input className="WelsDollar-SubscribeInput" placeholder="Email"/>
-                      <button className="WelsDollar-SubscribeButton" onClick={e => this.handleSubscribe(e)}>Subscribe</button>
+                  <div className="WeAreGoing-SubscribeForm">
+                      <input className="WeAreGoing-SubscribeInput" placeholder="Email"/>
+                      <button className="WeAreGoing-SubscribeButton" onClick={e => this.handleSubscribe(e)}>Subscribe</button>
                   </div>
                 </div>
             </div>
