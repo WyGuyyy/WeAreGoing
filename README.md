@@ -1,3 +1,11 @@
+This was a quick webapp I hacked together over a Saturday. It is simple enough - a one page application for donating a dollar a week to a designated content creator. It is no longer running live,
+but you can check out the small codebase here. It have a real-time ticker to track dollars donated for the week as well as a PayPal button that calls PayPals payment API to carry out a donation transaction using
+PayPals lite client to allow the user to login and submit a donation through their PayPal account. It also offers the ability to pay as a guest using a card.
+
+Seeing as the backend API is no longer running and the Database has been shut down, the real-time ticker will not be active and the content creator information will not appear.
+
+ The default React project readme instructions are below.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
